@@ -1,7 +1,92 @@
 ﻿
 @{
     ViewData["Title"] = "History";
+    string[] TableHeadersPet = new string[]{
+            "Id",
+            "Imie",
+            "Gatunek",
+            "Rasa",
+            "Wielkosc",
+            "Wiek",
+            "Dodatkowe informacje"};
+
+
+    string[] TableHeadersVisits = new string[]{
+            "Imie",
+            "Gatunek",
+            "Rasa",
+            "Wielkosc",
+            "Wiek",
+            "Dodatkowe informacje"};
+}
+
 }
 
 <h1>History</h1>
+<div class="table">
+    <table>
+        <tr>
+            @{ foreach (var header in TableHeadersPet)
+                {
+                    <th>
+                        @header
+                    </th>
+                }
+            }
 
+        </tr>
+    </table>
+    @{
+        if (Model != null)
+        {
+            foreach (var Data in Model)
+            {
+                <table>
+                    <tr>
+                        <td>@Data.imie</td>
+                        <td>@Data.gatunek</td>
+                        <td>@Data.rasa</td>
+                        <td>@Data.wielkosc</td>
+                        <td>@Data.wiek</td>
+                        <td>@Data.dodatkowe_informacje</td>
+                    </tr>
+                </table>
+
+            }
+        }
+    }
+</div>
+
+<div class="table">
+    <table>
+        <tr>
+            @{ foreach (var header in TableHeadersPet)
+                {
+                    <th>
+                        @header
+                    </th>
+                }
+            }
+
+        </tr>
+    </table>
+    @{
+        if (Model != null)
+        {
+            foreach (var Data in Model)
+            {
+                <table>
+                    <tr>
+                        <td>@Data.imie</td>
+                        <td>@Data.gatunek</td>
+                        <td>@Data.rasa</td>
+                        <td>@Data.wielkosc</td>
+                        <td>@Data.wiek</td>
+                        <td>@Data.dodatkowe_informacje</td>
+                    </tr>
+                </table>
+
+            }
+        }
+    }
+</div>
