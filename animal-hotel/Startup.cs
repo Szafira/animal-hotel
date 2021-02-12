@@ -1,6 +1,5 @@
-using animal_hotel.Data;
+
 using animal_hotel.Nowy_folder;
-using animal_hotel.Repository;
 using FluentAssertions.Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -19,7 +18,7 @@ using System.Threading.Tasks;
 
 namespace animal_hotel
 {
-    public class Startup : StartupBase
+    public class Startup
     {
         public Startup(IConfiguration configuration)
         {
@@ -31,14 +30,7 @@ namespace animal_hotel
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<AnimalHotelcontext>(
-                options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<IdentityUser, IdentityRole>();
-#if DEBUG
-
-#endif
-            services.AddScoped<IAccountRepository, AccountRepository>();
-
+           
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
