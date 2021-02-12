@@ -1,4 +1,3 @@
-using animal_hotel.Nowy_folder;
 using FluentAssertions.Common;
 using animal_hotel.Data;
 using Microsoft.AspNetCore.Builder;
