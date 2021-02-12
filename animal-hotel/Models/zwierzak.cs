@@ -19,4 +19,12 @@ namespace animal_hotel.Models
         public string dodatkowe_informacje { get; set; }
 
     }
+    public class rezerwacje
+    {
+        [Key]
+        public decimal id_rezerwacji { get; set; }
+        public decimal id_data { get; set; }
+        public decimal id_zwierz { get; set; }
+
+    }
 }

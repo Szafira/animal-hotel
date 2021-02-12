@@ -19,31 +19,13 @@ namespace animal_hotel.Controllers
         {
             this.Context = _context;
         }
-
-        public IActionResult History()
-        {
-           
-            List<zwierzak> pets = (from zwierzak in this.Context.zwierzak.Take(10) where zwierzak.id_klienta ==2
-                                   select zwierzak).ToList();
-
-            return View(pets);
-        }
     
 
         public IActionResult Index()
         {
             return View();
         }
-
-        public IActionResult Register()
-        {
-            return View();
-        }
-
-        public IActionResult Reservation()
-        {
-            return View();
-        }
+        
       
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

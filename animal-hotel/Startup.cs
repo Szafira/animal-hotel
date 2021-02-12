@@ -21,10 +21,11 @@ namespace animal_hotel
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<AnimalHotelcontext>(
-                options => options.UseSqlServer(("DefaultConnection:connectionString")));
             services.AddDbContext<petHistoryContext>(
-                 options => options.UseSqlServer("DefaultConnection:connectionString"));
+             options => options.UseSqlServer("name=DefaultConnection:connectionString"));
+
+            services.AddDbContext<ReservationContext>(
+             options => options.UseSqlServer("name=DefaultConnection:connectionString"));
 
             //services.AddIdentity<IdentityUser, IdentityRole>()
             //    .AddUserStore<AnimalHotelcontext>();

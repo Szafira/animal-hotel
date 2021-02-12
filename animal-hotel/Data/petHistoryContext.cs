@@ -9,6 +9,8 @@ namespace animal_hotel.Data
 {
     public class petHistoryContext : DbContext
     {
+        internal readonly object rezerwacje;
+
         public petHistoryContext(DbContextOptions<petHistoryContext> options)
            : base(options)
         {
