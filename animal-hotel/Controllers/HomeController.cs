@@ -1,4 +1,5 @@
-﻿using animal_hotel.Models;
+﻿using animal_hotel.Data;
+using animal_hotel.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,31 +13,20 @@ namespace animal_hotel.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private petHistoryContext Context { get; }
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(petHistoryContext _context)
         {
-            _logger = logger;
+            this.Context = _context;
         }
+    
 
         public IActionResult Index()
         {
             return View();
         }
-
-        public IActionResult Register()
-        {
-            return View();
-        }
-
-        public IActionResult Reservation()
-        {
-            return View();
-        }
-
-        public IActionResult History()
-        {
-            return View();
-        }
+        
+      
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

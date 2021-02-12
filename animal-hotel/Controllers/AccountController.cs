@@ -1,4 +1,5 @@
 ﻿using animal_hotel.Models;
+using animal_hotel.Data;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ namespace animal_hotel.Controllers
 {
     public class AccountController : Controller
     {
+
         [Route("SignUp")]
         public IActionResult SignUp()
         {

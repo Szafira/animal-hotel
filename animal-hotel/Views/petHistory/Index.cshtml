@@ -1,0 +1,68 @@
+﻿@model IEnumerable<animal_hotel.Models.zwierzak>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Imię
+            </th>
+            <th>
+                Gatunek
+            </th>
+            <th>
+                Rasa
+            </th>
+            <th>
+                Wielkość
+            </th>
+            <th>
+                Wiek
+            </th>
+            <th>
+                Dodatkowe Informacje
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.imie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gatunek)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rasa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.wielkosc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.wiek)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dodatkowe_informacje)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id_zwierz">Edit</a> 
+                <a asp-action="Delete" asp-route-id="@item.id_zwierz">Delete</a>
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="@item.id_zwierz" />
+                    <input type="submit" value="Delete" class="btn btn-danger" /> 
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
