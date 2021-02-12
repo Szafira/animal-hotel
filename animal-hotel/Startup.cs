@@ -1,3 +1,5 @@
+using animal_hotel.Nowy_folder;
+using FluentAssertions.Common;
 using animal_hotel.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,7 +11,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace animal_hotel
 {
-    public class Startup : StartupBase
+    public class Startup
     {
         public Startup(IConfiguration configuration)
         {
@@ -21,6 +23,7 @@ namespace animal_hotel
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
             services.AddDbContext<petHistoryContext>(
              options => options.UseSqlServer("name=DefaultConnection:connectionString"));
 
