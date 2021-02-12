@@ -1,5 +1,5 @@
 ﻿using animal_hotel.Models;
-using animal_hotel.Repository;
+using animal_hotel.Data;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,9 +10,9 @@ namespace animal_hotel.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IAccountRepository _accountRepository;
+        private readonly AccountRepository _accountRepository;
 
-        public AccountController(IAccountRepository accountRepository)
+        public AccountController(AccountRepository accountRepository)
         {
             _accountRepository = accountRepository;
         }
