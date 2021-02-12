@@ -1,20 +1,15 @@
 using animal_hotel.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 
 namespace animal_hotel
 {
-    public class Startup
+    public class Startup : StartupBase
     {
         public Startup(IConfiguration configuration)
         {
@@ -23,12 +18,17 @@ namespace animal_hotel
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
             services.AddDbContext<petHistoryContext>(
              options => options.UseSqlServer("name=DefaultConnection:connectionString"));
+
+            services.AddDbContext<ReservationContext>(
+             options => options.UseSqlServer("name=DefaultConnection:connectionString"));
+
+            //services.AddIdentity<IdentityUser, IdentityRole>()
+            //    .AddUserStore<AnimalHotelcontext>();
 
             services.AddDistributedMemoryCache();
 
@@ -38,7 +38,7 @@ namespace animal_hotel
                 options.Cookie.IsEssential = true;
             });
         }
-
+        
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -56,6 +56,8 @@ namespace animal_hotel
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
             app.UseSession();
