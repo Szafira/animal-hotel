@@ -30,4 +30,13 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\css\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\lib\imgs\z.jpg" />
+    <None Include="wwwroot\lib\imgs\zwierzaki.jpg" />
+  </ItemGroup>
+
 </Project>

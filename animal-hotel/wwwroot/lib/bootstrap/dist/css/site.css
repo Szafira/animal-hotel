@@ -1,0 +1,21 @@
+﻿.body{
+    background-color:blanchedalmond;
+}
+.container{
+    background-color:white;
+    font-family:'Times New Roman', Times, serif;
+   
+
+}
+#zap{
+    padding-left:30px;
+    font-family:'Times New Roman', Times, serif;
+    text-align:center;
+   
+}
+.footer{
+    
+    text-align:center;
+    font-family: 'Times New Roman', Times, serif;
+    background-color:gray;
+}
