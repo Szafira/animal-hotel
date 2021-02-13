@@ -7,30 +7,25 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using animal_hotel.Data;
 using animal_hotel.Models;
-using Microsoft.Data.SqlClient;
 
 namespace animal_hotel.Controllers
 {
-    public class petHistoryController : Controller
+    public class ReservationsController : Controller
     {
         private readonly petHistoryContext _context;
 
-        public petHistoryController(petHistoryContext context)
+        public ReservationsController(petHistoryContext context)
         {
             _context = context;
         }
-       // SqlConnection con = new SqlConnection("name=DefaultConnection:connectionString");
-       // SqlCommand command = new SqlCommand("Select imie, gatunek, rasa, wiek, dodatkowe_informacje from zwierzak where id_klienta=1");
-       // SqlDataReader reader = command.ExecuteReader();
 
-
-        // GET: petHistory
+        // GET: Reservations
         public async Task<IActionResult> Index()
         {
-            return View(await _context.zwierzak.ToListAsync());
+            return View(await _context.rezerwacje.ToListAsync());
         }
 
-        // GET: petHistory/Details/5
+        // GET: Reservations/Details/5
         public async Task<IActionResult> Details(decimal? id)
         {
             if (id == null)
@@ -38,39 +33,39 @@ namespace animal_hotel.Controllers
                 return NotFound();
             }
 
-            var zwierzak = await _context.zwierzak
-                .FirstOrDefaultAsync(m => m.id_zwierz == id);
-            if (zwierzak == null)
+            var rezerwacje = await _context.rezerwacje
+                .FirstOrDefaultAsync(m => m.id_rezerwacji == id);
+            if (rezerwacje == null)
             {
                 return NotFound();
             }
 
-            return View(zwierzak);
+            return View(rezerwacje);
         }
 
-        // GET: petHistory/Create
+        // GET: Reservations/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: petHistory/Create
+        // POST: Reservations/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id_zwierz,id_klienta,imie,gatunek,rasa,wielkosc,wiek,dodatkowe_informacje")] zwierzak zwierzak)
+        public async Task<IActionResult> Create([Bind("id_rezerwacji,id_data,id_zwierz")] rezerwacje rezerwacje)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(zwierzak);
+                _context.Add(rezerwacje);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(zwierzak);
+            return View(rezerwacje);
         }
 
-        // GET: petHistory/Edit/5
+        // GET: Reservations/Edit/5
         public async Task<IActionResult> Edit(decimal? id)
         {
             if (id == null)
@@ -78,22 +73,22 @@ namespace animal_hotel.Controllers
                 return NotFound();
             }
 
-            var zwierzak = await _context.zwierzak.FindAsync(id);
-            if (zwierzak == null)
+            var rezerwacje = await _context.rezerwacje.FindAsync(id);
+            if (rezerwacje == null)
             {
                 return NotFound();
             }
-            return View(zwierzak);
+            return View(rezerwacje);
         }
 
-        // POST: petHistory/Edit/5
+        // POST: Reservations/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(decimal id, [Bind("id_zwierz,id_klienta,imie,gatunek,rasa,wielkosc,wiek,dodatkowe_informacje")] zwierzak zwierzak)
+        public async Task<IActionResult> Edit(decimal id, [Bind("id_rezerwacji,id_data,id_zwierz")] rezerwacje rezerwacje)
         {
-            if (id != zwierzak.id_zwierz)
+            if (id != rezerwacje.id_rezerwacji)
             {
                 return NotFound();
             }
@@ -102,12 +97,12 @@ namespace animal_hotel.Controllers
             {
                 try
                 {
-                    _context.Update(zwierzak);
+                    _context.Update(rezerwacje);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!zwierzakExists(zwierzak.id_zwierz))
+                    if (!rezerwacjeExists(rezerwacje.id_rezerwacji))
                     {
                         return NotFound();
                     }
@@ -118,10 +113,10 @@ namespace animal_hotel.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(zwierzak);
+            return View(rezerwacje);
         }
 
-        // GET: petHistory/Delete/5
+        // GET: Reservations/Delete/5
         public async Task<IActionResult> Delete(decimal? id)
         {
             if (id == null)
@@ -129,30 +124,30 @@ namespace animal_hotel.Controllers
                 return NotFound();
             }
 
-            var zwierzak = await _context.zwierzak
-                .FirstOrDefaultAsync(m => m.id_zwierz == id);
-            if (zwierzak == null)
+            var rezerwacje = await _context.rezerwacje
+                .FirstOrDefaultAsync(m => m.id_rezerwacji == id);
+            if (rezerwacje == null)
             {
                 return NotFound();
             }
 
-            return View(zwierzak);
+            return View(rezerwacje);
         }
 
-        // POST: petHistory/Delete/5
+        // POST: Reservations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(decimal id)
         {
-            var zwierzak = await _context.zwierzak.FindAsync(id);
-            _context.zwierzak.Remove(zwierzak);
+            var rezerwacje = await _context.rezerwacje.FindAsync(id);
+            _context.rezerwacje.Remove(rezerwacje);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool zwierzakExists(decimal id)
+        private bool rezerwacjeExists(decimal id)
         {
-            return _context.zwierzak.Any(e => e.id_zwierz == id);
+            return _context.rezerwacje.Any(e => e.id_rezerwacji == id);
         }
     }
 }

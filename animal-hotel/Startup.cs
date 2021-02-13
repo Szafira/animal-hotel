@@ -1,8 +1,6 @@
-using FluentAssertions.Common;
 using animal_hotel.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,11 +24,6 @@ namespace animal_hotel
             services.AddDbContext<petHistoryContext>(
              options => options.UseSqlServer("name=DefaultConnection:connectionString"));
 
-            services.AddDbContext<ReservationContext>(
-             options => options.UseSqlServer("name=DefaultConnection:connectionString"));
-
-            //services.AddIdentity<IdentityUser, IdentityRole>()
-            //    .AddUserStore<AnimalHotelcontext>();
 
             services.AddDistributedMemoryCache();
 

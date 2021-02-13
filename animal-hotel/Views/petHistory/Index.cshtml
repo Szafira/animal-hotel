@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Index</h1>
@@ -13,22 +14,25 @@
     <thead>
         <tr>
             <th>
-               Imię
+                @Html.DisplayNameFor(model => model.id_klienta)
             </th>
             <th>
-                Gatunek
+                @Html.DisplayNameFor(model => model.imie)
             </th>
             <th>
-                Rasa
+                @Html.DisplayNameFor(model => model.gatunek)
             </th>
             <th>
-                Wielkość
+                @Html.DisplayNameFor(model => model.rasa)
             </th>
             <th>
-                Wiek
+                @Html.DisplayNameFor(model => model.wielkosc)
             </th>
             <th>
-                Dodatkowe Informacje
+                @Html.DisplayNameFor(model => model.wiek)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dodatkowe_informacje)
             </th>
             <th></th>
         </tr>
@@ -36,6 +40,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_klienta)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.imie)
             </td>
@@ -55,12 +62,9 @@
                 @Html.DisplayFor(modelItem => item.dodatkowe_informacje)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.id_zwierz">Edit</a> 
+                <a asp-action="Edit" asp-route-id="@item.id_zwierz">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id_zwierz">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.id_zwierz">Delete</a>
-                <form asp-action="Delete">
-                    <input type="hidden" asp-for="@item.id_zwierz" />
-                    <input type="submit" value="Delete" class="btn btn-danger" /> 
-                </form>
             </td>
         </tr>
 }

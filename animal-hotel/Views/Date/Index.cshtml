@@ -1,0 +1,34 @@
+﻿@model IEnumerable<animal_hotel.Models.terminy>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Najbliższe terminy:
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.termin)
+            </td>
+            <td>
+                <a asp-controller="Reservations" asp-action="Create" asp-route-id="">Zrób rezerwację</a> |
+                <a asp-controller="Reservations" asp-action="Edit" asp-route-id="@item.id_data">Edit</a> |
+                <a asp-controller="Reservations" asp-action="Details" asp-route-id="@item.id_data">Details</a> |
+            </td>
+
+        </tr>
+}
+    </tbody>
+</table>

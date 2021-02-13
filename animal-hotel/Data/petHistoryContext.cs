@@ -9,7 +9,6 @@ namespace animal_hotel.Data
 {
     public class petHistoryContext : DbContext
     {
-        internal readonly object rezerwacje;
 
         public petHistoryContext(DbContextOptions<petHistoryContext> options)
            : base(options)
@@ -17,7 +16,7 @@ namespace animal_hotel.Data
 
         }
         public DbSet<animal_hotel.Models.zwierzak> zwierzak { get; set; }
-            
-       
+        public DbSet<animal_hotel.Models.rezerwacje> rezerwacje { get; set; }
+        public DbSet<animal_hotel.Models.terminy> terminy { get; set; }
     }
 }
