@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Animal Hotel</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/site.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/site.css" />
+    <link rel="stylesheet" href="~/Style.css">
 
     <script src="~/lib/bootstrap/dist/js/authentication.js"></script>
 
@@ -30,12 +31,15 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
                             <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="AboutUs" asp-action="AboutUs">About Us</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Reservation">Reservation</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="petHistory" asp-action="Index">Visit history</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item ml-auto" >
                                 <a class="btn btn-outline-primary">Login</a>
                                 <a class="btn btn-primary" asp-area="" asp-controller="Account" asp-action="SignUp">SignUp</a>
                             </li>
@@ -56,7 +60,7 @@
 
 
 
-        <div class="container">
+        <div class="container" style="min-height:800px;">
             <main role="main" class="pb-3">
                 @RenderBody()
             </main>

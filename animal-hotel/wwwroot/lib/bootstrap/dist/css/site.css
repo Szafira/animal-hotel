@@ -17,5 +17,17 @@
     
     text-align:center;
     font-family: 'Times New Roman', Times, serif;
-    background-color:gray;
+    background-color:wheat;
+    height:30px;
+}
+.klasa {
+    float: left;
+    width: 33.33%;
+    box-sizing: border-box;
+}
+.klasa p{
+    font-size:14px;
+    padding:10px;
+    box-sizing:border-box;
+    display:block;
 }
