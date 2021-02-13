@@ -25,7 +25,7 @@ namespace animal_hotel
         {
             services.ConfigureApplicationCookie(config =>
             {
-                config.LoginPath = _configuration["Application:LoginPath"];
+                config.LoginPath = "/login";
 
             });
             services.AddControllersWithViews();

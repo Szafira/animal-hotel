@@ -11,12 +11,7 @@ namespace animal_hotel.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IAccountRepository _accountRepository;
-
-        public AccountController(IAccountRepository accountRepository)
-        {
-            _accountRepository = accountRepository;
-        }
+        
 
 
         [Route("SignUp")]
@@ -46,22 +41,8 @@ namespace animal_hotel.Controllers
             return View();
 
         }
-        [Route("Login")]
-        [HttpPost]
-        public async Task<IActionResult> Login(SignInModel signInModel)
-        {
-            if (ModelState.IsValid)
-            {
-                var result = await _accountRepository.PasswordSignInAsync(signInModel);
-                if(result.Succeeded)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-                ModelState.AddModelError("", "Niepoprawny email lub hasło");
-            }
-            return View(signInModel);
-
-        }
+        
+        
 
     }
 

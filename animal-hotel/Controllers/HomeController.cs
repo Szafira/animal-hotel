@@ -12,7 +12,7 @@ namespace animal_hotel.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+
         private petHistoryContext Context { get; }
 
         public HomeController(petHistoryContext _context)

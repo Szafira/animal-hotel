@@ -40,10 +40,12 @@ namespace animal_hotel.Data
             var result = await _userManager.CreateAsync(user, userModel.Password);
             return result;
         }
-        public async Task<SignInResult> PasswordSignInAsync(SignInModel signInModel)
-        {
-            return await _signInManager.PasswordSignInAsync(signInModel.Email, signInModel.Password, signInModel.RememberMe, false);
-        }
+       // public async Task<SignInResult> PasswordSignInAsync(SignInModel signInModel)
+        //{
+           // var user = await _userManager.FindByEmailAsync(signInModel.Email);
+            //var user = await _signInManager.PasswordSignInAsync(signInModel.Email, signInModel.Password, signInModel.RememberMe, false);
+           
+        //}
 
         Task<Microsoft.AspNet.Identity.IdentityResult> IAccountRepository.CreateUserAsync(SignUpModel userModel)
         {
