@@ -15,6 +15,10 @@ namespace animal_hotel.Controllers
     {
         private readonly petHistoryContext _context;
 
+        public static getid_klienta()
+        {
+            return id_klienta;
+        }
         public petHistoryController(petHistoryContext context)
         {
             _context = context;
